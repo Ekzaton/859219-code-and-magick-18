@@ -6,22 +6,22 @@ var cloud = {
   x: 100,
   y: 10,
   gap: 10
-}
+};
 
 var bar = {
   width: 40,
   height: 150,
   gap: 50
-}
+};
 
-var color = {
+var colors = {
   cloudColor: '#fff',
   cloudShadowColor: 'rgba(0, 0, 0, 0.7)',
   fontColor: '#000',
   yourColor: 'rgba(255, 0, 0, 1)'
 };
 
-var generate = {
+var hsl = {
   hue: 240,
   minSaturation: 20,
   maxSaturation: 90,
@@ -33,7 +33,7 @@ var getColor = function (hue, minSaturation, maxSaturation, lightness) {
   return ('hsl(' + hue + ', ' + saturation + ', ' + lightness + ')');
 };
 
-var getMaxElement = function(arr) {
+var getMaxElement = function (arr) {
   var maxElement = arr[0];
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] > maxElement) {
@@ -43,28 +43,28 @@ var getMaxElement = function(arr) {
   return maxElement;
 };
 
-var renderCloud = function(ctx, x, y, color) {
+var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, cloud.width, cloud.height);
 };
 
-window.renderStatistics = function(ctx, names, times) {
-  renderCloud(ctx, cloud.x + cloud.gap, cloud.y + cloud.gap, color.cloudShadowColor);
-  renderCloud(ctx, cloud.x, cloud.y, color.cloudColor);
+window.renderStatistics = function (ctx, names, times) {
+  renderCloud(ctx, cloud.x + cloud.gap, cloud.y + cloud.gap, colors.cloudShadowColor);
+  renderCloud(ctx, cloud.x, cloud.y, colors.cloudColor);
 
   var textGap = cloud.x + 2 * cloud.gap;
 
-  ctx.fillStyle = color.fontColor;
+  ctx.fillStyle = colors.fontColor;
   ctx.textBaseline = 'hanging';
   ctx.fillText(
-    'Ура вы победили!',
-    textGap,
-    cloud.y + 2 * cloud.gap
+      'Ура вы победили!',
+      textGap,
+      cloud.y + 2 * cloud.gap
   );
   ctx.fillText(
-    'Список результатов:',
-    textGap,
-    cloud.y + 4 * cloud.gap
+      'Список результатов:',
+      textGap,
+      cloud.y + 4 * cloud.gap
   );
 
   ctx.textBaseline = 'alphabetic';
@@ -73,26 +73,26 @@ window.renderStatistics = function(ctx, names, times) {
     var barHeight = (bar.height * times[i]) / maxTime;
     var barGap = cloud.x + bar.gap * (i + 1) + bar.width * i;
 
-    ctx.fillStyle = color.fontColor;
+    ctx.fillStyle = colors.fontColor;
     ctx.fillText(
-      Math.floor(times[i]),
-      barGap,
-      cloud.height - cloud.gap * 3 - barHeight
+        Math.floor(times[i]),
+        barGap,
+        cloud.height - cloud.gap * 3 - barHeight
     );
 
-    ctx.fillStyle = (names[i] === 'Вы') ? color.yourColor : getColor(generate.hue, generate.minSaturation, generate.maxSaturation, generate.lightness);
+    ctx.fillStyle = (names[i] === 'Вы') ? colors.yourColor : getColor(hsl.hue, hsl.minSaturation, hsl.maxSaturation, hsl.lightness);
     ctx.fillRect(
-      barGap,
-      cloud.height - cloud.gap * 2 - barHeight,
-      bar.width,
-      barHeight
+        barGap,
+        cloud.height - cloud.gap * 2 - barHeight,
+        bar.width,
+        barHeight
     );
 
-    ctx.fillStyle = color.fontColor;
+    ctx.fillStyle = colors.fontColor;
     ctx.fillText(
-      names[i],
-      barGap,
-      cloud.height
+        names[i],
+        barGap,
+        cloud.height
     );
-  };
+  }
 };
