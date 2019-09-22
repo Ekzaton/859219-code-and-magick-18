@@ -28,38 +28,38 @@ var Hsl = {
   LIGHTNESS: '50%'
 };
 
-//Отрисовка облака
+// Отрисовка облака
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, Cloud.WIDTH, Cloud.HEIGHT);
 };
 
-//Отрисовка текста заголовка
+// Отрисовка текста заголовка
 var renderTitle = function (ctx, text, x, y) {
   ctx.fillStyle = Colors.BLACK;
   ctx.textBaseline = 'hanging';
 
-  var lines = text.split("\n");
+  var lines = text.split('\n');
 
   for (var i = 0; i < lines.length; i++) {
- 		ctx.fillText(lines[i], x, (i + 1) * y);
-	}
+    ctx.fillText(lines[i], x, (i + 1) * y);
+  }
 };
 
-//Отрисовка текста легенды
+// Отрисовка текста легенды
 var renderLegend = function (ctx, text, x, y) {
   ctx.fillStyle = Colors.BLACK;
   ctx.textBaseline = 'alphabetic';
   ctx.fillText(text, x, y);
 };
 
-//Генерация заливики для столбцов статистики
+// Генерация заливики для столбцов статистики
 var getColor = function (hue, minSaturation, maxSaturation, lightness) {
   var saturation = Math.floor(Math.random() * (maxSaturation - minSaturation) + minSaturation) + '%';
   return ('hsl(' + hue + ', ' + saturation + ', ' + lightness + ')');
 };
 
-//Отрисовка столбцов статистики
+// Отрисовка столбцов статистики
 var renderBar = function (ctx, names, times) {
   for (var i = 0; i < names.length; i++) {
     var maxTime = Math.max.apply(null, times);
@@ -73,7 +73,7 @@ var renderBar = function (ctx, names, times) {
   }
 };
 
-//Отрисовка статистики
+// Отрисовка статистики
 window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, Cloud.X + Cloud.GAP, Cloud.Y + Cloud.GAP, Colors.GRAY);
   renderCloud(ctx, Cloud.X, Cloud.Y, Colors.WHITE);
