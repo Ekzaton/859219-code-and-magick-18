@@ -51,6 +51,7 @@ var renderTitle = function (ctx, text, x, y) {
 // Отрисовка текста легенды
 var renderLegend = function (ctx, text, x, y) {
   ctx.fillStyle = Colors.BLACK;
+  ctx.textBaseline = 'alphabetic';
   ctx.fillText(text, x, y);
 };
 
