@@ -28,6 +28,8 @@ var Hsl = {
   LIGHTNESS: '50%'
 };
 
+var TITLE = 'Ура вы победили!\nСписок результатов:';
+
 // Отрисовка облака
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -49,7 +51,6 @@ var renderTitle = function (ctx, text, x, y) {
 // Отрисовка текста легенды
 var renderLegend = function (ctx, text, x, y) {
   ctx.fillStyle = Colors.BLACK;
-  ctx.textBaseline = 'alphabetic';
   ctx.fillText(text, x, y);
 };
 
@@ -77,6 +78,6 @@ var renderBar = function (ctx, names, times) {
 window.renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, Cloud.X + Cloud.GAP, Cloud.Y + Cloud.GAP, Colors.GRAY);
   renderCloud(ctx, Cloud.X, Cloud.Y, Colors.WHITE);
-  renderTitle(ctx, 'Ура вы победили!\nСписок результатов:', Cloud.X + 2 * Cloud.GAP, Cloud.Y + 1.5 * Cloud.GAP);
+  renderTitle(ctx, TITLE, Cloud.X + 2 * Cloud.GAP, Cloud.Y + 1.5 * Cloud.GAP);
   renderBar(ctx, names, times);
 };
