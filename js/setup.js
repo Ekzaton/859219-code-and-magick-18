@@ -22,10 +22,10 @@ var getRandomItem = function (min, max) {
 };
 
 // Генерация массива данных для персонажей
-var getData = function () {
+var getData = function (number) {
   var wizardData = [];
 
-  for (var i = 0; i < NUMBER_OF_WIZARDS; i++) {
+  for (var i = 0; i < number; i++) {
     if (getRandomItem(0, 1) === 0) {
       var fullName = WIZARDS.name.firstName[getRandomItem(0, WIZARDS.name.firstName.length - 1)] + ' ' + WIZARDS.name.lastName[getRandomItem(0, WIZARDS.name.lastName.length - 1)];
     } else {
@@ -65,4 +65,4 @@ var createWizardsList = function (wizardData) {
   setupPopup.querySelector('.setup-similar').classList.remove('hidden');
 };
 
-createWizardsList(getData());
+createWizardsList(getData(NUMBER_OF_WIZARDS));
