@@ -21,15 +21,14 @@ var getRandomItem = function (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-// Генерация данных для персонажей
+// Генерация массива данных для персонажей
 var getData = function () {
   var wizardData = [];
 
   for (var i = 0; i < NUMBER_OF_WIZARDS; i++) {
     if (getRandomItem(0, 1) === 0) {
       var fullName = WIZARDS.name.firstName[getRandomItem(0, WIZARDS.name.firstName.length - 1)] + ' ' + WIZARDS.name.lastName[getRandomItem(0, WIZARDS.name.lastName.length - 1)];
-    }
-    else {
+    } else {
       fullName = WIZARDS.name.lastName[getRandomItem(0, WIZARDS.name.lastName.length - 1)] + ' ' + WIZARDS.name.firstName[getRandomItem(0, WIZARDS.name.firstName.length - 1)];
     }
 
