@@ -22,7 +22,7 @@ var getRandomItem = function (min, max) {
 };
 
 // Генерация массива данных для персонажей
-var getData = function (number) {
+var getWizardData = function (number) {
   var wizardData = [];
 
   for (var i = 0; i < number; i++) {
@@ -42,7 +42,7 @@ var getData = function (number) {
   return wizardData;
 };
 
-// Создание песонажа
+// Создание персонажа
 var createWizard = function (wizard) {
   var setupWizard = setupSimilarWizardTemplate.cloneNode(true);
 
@@ -65,4 +65,4 @@ var createWizardsList = function (wizardData) {
   setupPopup.querySelector('.setup-similar').classList.remove('hidden');
 };
 
-createWizardsList(getData(NUMBER_OF_WIZARDS));
+createWizardsList(getWizardData(NUMBER_OF_WIZARDS));
