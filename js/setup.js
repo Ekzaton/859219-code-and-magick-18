@@ -67,11 +67,11 @@ var createWizardsList = function (wizardData) {
   setupSimilarList.appendChild(setupWizardsList);
 };
 
-// Отрисовка окна
+// Отрисовка окна сравнения (items - количество похожих персонажей)
 var renderPopup = function (items) {
   setupPopup.classList.remove('hidden');
   createWizardsList(getWizardData(items));
   setupPopup.querySelector('.setup-similar').classList.remove('hidden');
-}
+};
 
 renderPopup(NUMBER_OF_WIZARDS);
