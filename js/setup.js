@@ -12,13 +12,13 @@ var WIZARD = {
 var NUMBER_OF_WIZARDS = 4;
 
 // Переменные для DOM
-var setupPopup = document.querySelector('.setup');
-var setupSimilarList = setupPopup.querySelector('.setup-similar-list');
-var setupSimilarItem = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
+var setupPopupElement = document.querySelector('.setup');
+var setupSimilarListElement = setupPopupElement.querySelector('.setup-similar-list');
+var setupSimilarItemElement = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
-// Генерация индекса случайного элемента (minIndex - минимальный индекс, maxIndex - максимльный индекс)
-var getRandomIndex = function (minIndex, maxIndex) {
-  return Math.floor(Math.random() * (maxIndex - minIndex + 1)) + minIndex;
+// Генерация индекса случайного элемента массива (array - массив)
+var getRandomIndex = function (array) {
+   return array[Math.floor((Math.random() * array.length))];
 };
 
 // Генерация объектов для массива данных о персонажах (number - количество персонажей)
@@ -26,12 +26,9 @@ var getWizardData = function (number) {
   var wizardData = [];
 
   for (var i = 0; i < number; i++) {
-    var firstName = WIZARD.name.first[getRandomIndex(0, WIZARD.name.first.length - 1)];
-    var lastName = WIZARD.name.last[getRandomIndex(0, WIZARD.name.last.length - 1)];
-    var fullName = firstName + ' ' + lastName;
-
-    var coatColor = WIZARD.coatColor[getRandomIndex(0, WIZARD.coatColor.length - 1)];
-    var eyesColor = WIZARD.eyesColor[getRandomIndex(0, WIZARD.eyesColor.length - 1)];
+    var fullName = getRandomIndex(WIZARD.name.first) + ' ' + getRandomIndex(WIZARD.name.last);
+    var coatColor = getRandomIndex(WIZARD.coatColor);
+    var eyesColor = getRandomIndex(WIZARD.eyesColor);
 
     var newWizard = {
       name: fullName,
@@ -47,7 +44,7 @@ var getWizardData = function (number) {
 
 // Создание персонажа (wizard - персонаж)
 var createWizard = function (wizard) {
-  var setupWizard = setupSimilarItem.cloneNode(true);
+  var setupWizard = setupSimilarItemElement.cloneNode(true);
 
   setupWizard.querySelector('.setup-similar-label').textContent = wizard.name;
   setupWizard.querySelector('.wizard-coat').style.fill = wizard.coatColor;
@@ -64,14 +61,14 @@ var createWizardsList = function (wizardData) {
     setupWizardsList.appendChild(createWizard(wizardData[i]));
   }
 
-  setupSimilarList.appendChild(setupWizardsList);
+  setupSimilarListElement.appendChild(setupWizardsList);
 };
 
 // Отрисовка окна сравнения (items - количество похожих персонажей)
 var renderPopup = function (items) {
-  setupPopup.classList.remove('hidden');
+  setupPopupElement.classList.remove('hidden');
   createWizardsList(getWizardData(items));
-  setupPopup.querySelector('.setup-similar').classList.remove('hidden');
+  setupPopupElement.querySelector('.setup-similar').classList.remove('hidden');
 };
 
 renderPopup(NUMBER_OF_WIZARDS);
