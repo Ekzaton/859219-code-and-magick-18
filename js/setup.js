@@ -18,7 +18,7 @@ var setupSimilarItemElement = document.querySelector('#similar-wizard-template')
 
 // Генерация индекса случайного элемента массива (array - массив)
 var getRandomIndex = function (array) {
-   return array[Math.floor((Math.random() * array.length))];
+  return array[Math.floor((Math.random() * array.length))];
 };
 
 // Генерация объектов для массива данных о персонажах (number - количество персонажей)
