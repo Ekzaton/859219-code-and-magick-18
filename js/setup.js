@@ -107,7 +107,7 @@ var closePopup = function () {
 };
 
 // Изменение цвета элемента и поля ввода
-function changeColor (element, input, array) {
+var changeColor = function (element, input, array) {
   var color = getRandomIndex(array);
 
   if (element === wizardFireballElement) {
