@@ -117,7 +117,7 @@ var changeColor = function (element, input, array) {
   }
 
   input.value = color;
-}
+};
 
 // Обработчики событий DOM
 setupOpenElement.addEventListener('click', function () {
