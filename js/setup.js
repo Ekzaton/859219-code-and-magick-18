@@ -83,7 +83,6 @@ var createWizardsList = function (wizardData) {
 
 // Отрисовка окна сравнения
 var renderPopup = function (numberOfWizards) {
-  //setupPopupElement.classList.remove('hidden');
   setupSimilarListElement.appendChild(createWizardsList(getWizardData(numberOfWizards)));
   setupElement.querySelector('.setup-similar').classList.remove('hidden');
 };
@@ -96,19 +95,19 @@ var onPopupEscPress = function (evt) {
 };
 
 // Открытие окна
-var openPopup = function() {
+var openPopup = function () {
   setupElement.classList.remove('hidden');
   document.addEventListener('keydown', onPopupEscPress);
 };
 
 // Закрытие окна
-var closePopup = function() {
+var closePopup = function () {
   setupElement.classList.add('hidden');
   document.removeEventListener('keydown', onPopupEscPress);
 };
 
 // Изменение цвета элемента и поля ввода
-function changeColor(element, input, array) {
+function changeColor (element, input, array) {
   var color = getRandomIndex(array);
 
   if (element === wizardFireballElement) {
