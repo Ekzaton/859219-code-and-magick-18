@@ -100,7 +100,7 @@ var closePopup = function () {
 
 // Закрытие окна по ESC при отсутствии фокуса на элементе внутри него
 var onPopupEscPress = function (evt) {
-  if (evt.keyCode === ESC_KEYCODE && evt.target != userNameInputElement) {
+  if (evt.keyCode === ESC_KEYCODE && evt.target !== userNameInputElement) {
     closePopup();
   }
 };
