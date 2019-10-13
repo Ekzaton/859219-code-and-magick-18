@@ -5,7 +5,7 @@
   var ESC_KEYCODE = 27;
   var ENTER_KEYCODE = 13;
 
-  //Переменные DOM
+  // Переменные DOM
   var userNameInputElement = document.querySelector('.setup-user-name');
 
   window.util = {

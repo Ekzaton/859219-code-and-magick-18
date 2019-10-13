@@ -66,7 +66,7 @@
 
     for (var i = 0; i < numberOfWizards; i++) {
       var firstName = window.util.getRandomIndex(WIZARD.names.first);
-      var lastName =  window.util.getRandomIndex(WIZARD.names.last);
+      var lastName = window.util.getRandomIndex(WIZARD.names.last);
       var fullName = firstName + ' ' + lastName;
       var coatColor = window.util.getRandomIndex(WIZARD.coatColors);
       var eyesColor = window.util.getRandomIndex(WIZARD.eyesColors);
@@ -108,8 +108,8 @@
   // Отрисовка окна сравнения
   var renderPopup = function (numberOfWizards) {
     setupSimilarListElement.appendChild(
-      createWizardsList(getWizardData(numberOfWizards)
-    ));
+        createWizardsList(getWizardData(numberOfWizards)
+        ));
     setupElement.querySelector('.setup-similar').classList.remove('hidden');
   };
 
@@ -126,21 +126,24 @@
 
   // Обработчики событий DOM
   wizardCoatElement.addEventListener('click', function () {
-      changeColor(wizardCoatElement,
-      wizardCoatInputElement,
-      window.util.getRandomIndex(WIZARD.coatColors));
+    changeColor(wizardCoatElement,
+        wizardCoatInputElement,
+        window.util.getRandomIndex(WIZARD.coatColors)
+    );
   });
 
   wizardEyesElement.addEventListener('click', function () {
-      changeColor(wizardEyesElement,
-      wizardEyesInputElement,
-      window.util.getRandomIndex(WIZARD.eyesColors));
+    changeColor(wizardEyesElement,
+        wizardEyesInputElement,
+        window.util.getRandomIndex(WIZARD.eyesColors)
+    );
   });
 
   wizardFireballElement.addEventListener('click', function () {
-      changeColor(wizardFireballElement,
-      wizardFireballInputElement,
-      window.util.getRandomIndex(WIZARD.fireballColors));
+    changeColor(wizardFireballElement,
+       wizardFireballInputElement,
+       window.util.getRandomIndex(WIZARD.fireballColors)
+     );
   });
 
   // Запуск
