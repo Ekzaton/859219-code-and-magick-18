@@ -141,9 +141,9 @@
 
   wizardFireballElement.addEventListener('click', function () {
     changeColor(wizardFireballElement,
-       wizardFireballInputElement,
-       window.util.getRandomIndex(WIZARD.fireballColors)
-     );
+        wizardFireballInputElement,
+        window.util.getRandomIndex(WIZARD.fireballColors)
+    );
   });
 
   // Запуск
