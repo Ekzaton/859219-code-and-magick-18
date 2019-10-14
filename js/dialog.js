@@ -10,12 +10,14 @@
   // Открытие окна
   var openPopup = function () {
     setupElement.classList.remove('hidden');
+    window.setup.renderPopup(window.setup.NUMBER_OF_WIZARDS);
     document.addEventListener('keydown', onPopupEscPress);
   };
 
   // Закрытие окна
   var closePopup = function () {
     setupElement.classList.add('hidden');
+    window.setup.NUMBER_OF_WIZARDS = 0;
     document.removeEventListener('keydown', onPopupEscPress);
   };
 

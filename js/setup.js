@@ -56,6 +56,8 @@
   var wizardEyesElement = wizardElement.querySelector('.wizard-eyes');
   var wizardFireballElement = document.querySelector('.setup-fireball-wrap');
 
+  var userNameInputElement = setupElement.querySelector('.setup-user-name');
+
   var wizardCoatInputElement = setupElement.querySelector('[name = coat-color]');
   var wizardEyesInputElement = setupElement.querySelector('[name = eyes-color]');
   var wizardFireballInputElement = setupElement.querySelector('[name = fireball-color]');
@@ -105,12 +107,16 @@
     return setupWizardsList;
   };
 
-  // Отрисовка окна сравнения
-  var renderPopup = function (numberOfWizards) {
-    setupSimilarListElement.appendChild(
-        createWizardsList(getWizardData(numberOfWizards)
-        ));
-    setupElement.querySelector('.setup-similar').classList.remove('hidden');
+  window.setup = {
+    // Отрисовка окна сравнения
+    NUMBER_OF_WIZARDS: NUMBER_OF_WIZARDS,
+
+    renderPopup: function (numberOfWizards) {
+      setupSimilarListElement.appendChild(
+          createWizardsList(getWizardData(numberOfWizards)
+          ));
+      setupElement.querySelector('.setup-similar').classList.remove('hidden');
+    }
   };
 
   // Изменение цвета элемента и его поля ввода
@@ -125,6 +131,8 @@
   };
 
   // Обработчики событий DOM
+  userNameInputElement.addEventListener('keydown', window.util.disableEscEvent);
+
   wizardCoatElement.addEventListener('click', function () {
     changeColor(wizardCoatElement,
         wizardCoatInputElement,
@@ -145,7 +153,4 @@
         window.util.getRandomIndex(WIZARD.fireballColors)
     );
   });
-
-  // Запуск
-  renderPopup(NUMBER_OF_WIZARDS);
 })();

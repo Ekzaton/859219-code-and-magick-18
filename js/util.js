@@ -5,14 +5,17 @@
   var ESC_KEYCODE = 27;
   var ENTER_KEYCODE = 13;
 
-  // Переменные DOM
-  var userNameInputElement = document.querySelector('.setup-user-name');
-
   window.util = {
     // Действие при нажатии ESC
     isEscEvent: function (evt, action) {
-      if (evt.keyCode === ESC_KEYCODE && evt.target !== userNameInputElement) {
+      if (evt.keyCode === ESC_KEYCODE) {
         action();
+      }
+    },
+    // Запрет действия при нажатии ESC
+    disableEscEvent: function (evt) {
+      if (evt.keyCode === ESC_KEYCODE) {
+        evt.stopPropagation();
       }
     },
     // Действие при нажатии ENTER
