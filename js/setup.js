@@ -122,9 +122,9 @@
     // Отрисовка окна сравнения
     renderPopup: function () {
       setupSimilarListElement.appendChild(
-        createWizardsList(
-          getWizardData(NUMBER_OF_WIZARDS)
-        )
+          createWizardsList(
+              getWizardData(NUMBER_OF_WIZARDS)
+          )
       );
       setupElement.querySelector('.setup-similar').classList.remove('hidden');
     }
@@ -135,25 +135,25 @@
 
   wizardCoatElement.addEventListener('click', function () {
     changeColor(
-      wizardCoatElement,
-      wizardCoatInputElement,
-      window.util.getRandomIndex(WIZARD.coatColors)
+        wizardCoatElement,
+        wizardCoatInputElement,
+        window.util.getRandomIndex(WIZARD.coatColors)
     );
   });
 
   wizardEyesElement.addEventListener('click', function () {
     changeColor(
-      wizardEyesElement,
-      wizardEyesInputElement,
-      window.util.getRandomIndex(WIZARD.eyesColors)
+        wizardEyesElement,
+        wizardEyesInputElement,
+        window.util.getRandomIndex(WIZARD.eyesColors)
     );
   });
 
   wizardFireballElement.addEventListener('click', function () {
     changeColor(
-      wizardFireballElement,
-      wizardFireballInputElement,
-      window.util.getRandomIndex(WIZARD.fireballColors)
+        wizardFireballElement,
+        wizardFireballInputElement,
+        window.util.getRandomIndex(WIZARD.fireballColors)
     );
   });
 })();
