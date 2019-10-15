@@ -1,6 +1,8 @@
 'use strict';
 
 (function () {
+  var popupOpen = false;
+
   // Переменные для DOM
   var setupElement = document.querySelector('.setup');
   var setupOpenElement = document.querySelector('.setup-open');
@@ -9,15 +11,18 @@
 
   // Открытие окна
   var openPopup = function () {
+    if (!popupOpen) {
+      window.setup.renderPopup();
+      popupOpen = true;
+    }
+
     setupElement.classList.remove('hidden');
-    window.setup.renderPopup(window.setup.NUMBER_OF_WIZARDS);
     document.addEventListener('keydown', onPopupEscPress);
   };
 
   // Закрытие окна
   var closePopup = function () {
     setupElement.classList.add('hidden');
-    window.setup.NUMBER_OF_WIZARDS = 0;
     document.removeEventListener('keydown', onPopupEscPress);
   };
 
@@ -51,8 +56,11 @@
       y: evt.clientY
     };
 
+    var dragged = false;
+
     var onMouseMove = function (moveEvt) {
       moveEvt.preventDefault();
+      dragged = true;
 
       var shift = {
         x: startCoords.x - moveEvt.clientX,
@@ -73,6 +81,14 @@
 
       document.removeEventListener('mousemove', onMouseMove);
       document.removeEventListener('mouseup', onMouseUp);
+
+      if (dragged) {
+        var onClickPreventDefault = function (evt) {
+          evt.preventDefault();
+          dialogHandleElement.removeEventListener('click', onClickPreventDefault)
+        };
+        dialogHandleElement.addEventListener('click', onClickPreventDefault);
+      }
     };
 
     document.addEventListener('mousemove', onMouseMove);

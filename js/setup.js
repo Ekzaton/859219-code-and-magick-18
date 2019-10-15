@@ -107,18 +107,6 @@
     return setupWizardsList;
   };
 
-  window.setup = {
-    // Отрисовка окна сравнения
-    NUMBER_OF_WIZARDS: NUMBER_OF_WIZARDS,
-
-    renderPopup: function (numberOfWizards) {
-      setupSimilarListElement.appendChild(
-          createWizardsList(getWizardData(numberOfWizards)
-          ));
-      setupElement.querySelector('.setup-similar').classList.remove('hidden');
-    }
-  };
-
   // Изменение цвета элемента и его поля ввода
   var changeColor = function (element, inputElement, color) {
     if (element === wizardFireballElement) {
@@ -130,27 +118,42 @@
     inputElement.value = color;
   };
 
+  window.setup = {
+    // Отрисовка окна сравнения
+    renderPopup: function () {
+      setupSimilarListElement.appendChild(
+        createWizardsList(
+          getWizardData(NUMBER_OF_WIZARDS)
+        )
+      );
+      setupElement.querySelector('.setup-similar').classList.remove('hidden');
+    }
+  };
+
   // Обработчики событий DOM
   userNameInputElement.addEventListener('keydown', window.util.disableEscEvent);
 
   wizardCoatElement.addEventListener('click', function () {
-    changeColor(wizardCoatElement,
-        wizardCoatInputElement,
-        window.util.getRandomIndex(WIZARD.coatColors)
+    changeColor(
+      wizardCoatElement,
+      wizardCoatInputElement,
+      window.util.getRandomIndex(WIZARD.coatColors)
     );
   });
 
   wizardEyesElement.addEventListener('click', function () {
-    changeColor(wizardEyesElement,
-        wizardEyesInputElement,
-        window.util.getRandomIndex(WIZARD.eyesColors)
+    changeColor(
+      wizardEyesElement,
+      wizardEyesInputElement,
+      window.util.getRandomIndex(WIZARD.eyesColors)
     );
   });
 
   wizardFireballElement.addEventListener('click', function () {
-    changeColor(wizardFireballElement,
-        wizardFireballInputElement,
-        window.util.getRandomIndex(WIZARD.fireballColors)
+    changeColor(
+      wizardFireballElement,
+      wizardFireballInputElement,
+      window.util.getRandomIndex(WIZARD.fireballColors)
     );
   });
 })();
