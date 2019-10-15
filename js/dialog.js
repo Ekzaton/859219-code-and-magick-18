@@ -1,9 +1,10 @@
 'use strict';
 
 (function () {
-  var popupOpen = false;
+  // Переменные
+  var popupIsOpened = false;
 
-  // Переменные для DOM
+  // Элементы DOM
   var setupElement = document.querySelector('.setup');
   var setupOpenElement = document.querySelector('.setup-open');
   var setupCloseElement = setupElement.querySelector('.setup-close');
@@ -11,11 +12,10 @@
 
   // Открытие окна
   var openPopup = function () {
-    if (!popupOpen) {
+    if (!popupIsOpened) {
       window.setup.renderPopup();
-      popupOpen = true;
+      popupIsOpened = true;
     }
-
     setupElement.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscPress);
   };
@@ -23,6 +23,8 @@
   // Закрытие окна
   var closePopup = function () {
     setupElement.classList.add('hidden');
+    setupElement.style.removeProperty('top');
+    setupElement.style.removeProperty('left');
     document.removeEventListener('keydown', onPopupEscPress);
   };
 

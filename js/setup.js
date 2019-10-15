@@ -45,7 +45,7 @@
   };
   var NUMBER_OF_WIZARDS = 4;
 
-  // Переменные для DOM
+  // Элементы DOM
   var setupElement = document.querySelector('.setup');
   var setupSimilarListElement = setupElement.querySelector('.setup-similar-list');
   var setupSimilarItemElement = document.querySelector('#similar-wizard-template').
