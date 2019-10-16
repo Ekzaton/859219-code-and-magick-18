@@ -30,7 +30,7 @@
 
   // Закрытие окна по ESC при отсутствии фокуса на элементе внутри него
   var onPopupEscPress = function (evt) {
-    window.util.isEscEvent(evt, closePopup);
+    window.util.pressEscEvent(evt, closePopup);
   };
 
   // Обработчики событий DOM
@@ -39,7 +39,7 @@
   });
 
   setupOpenElement.addEventListener('keydown', function (evt) {
-    window.util.isEnterEvent(evt, openPopup);
+    window.util.pressEnterEvent(evt, openPopup);
   });
 
   setupCloseElement.addEventListener('click', function () {
@@ -47,7 +47,7 @@
   });
 
   setupCloseElement.addEventListener('keydown', function (evt) {
-    window.util.isEnterEvent(evt, closePopup);
+    window.util.pressEnterEvent(evt, closePopup);
   });
 
   dialogHandleElement.addEventListener('mousedown', function (evt) {

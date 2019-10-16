@@ -7,7 +7,7 @@
 
   window.util = {
     // Действие при нажатии ESC
-    isEscEvent: function (evt, action) {
+    pressEscEvent: function (evt, action) {
       if (evt.keyCode === ESC_KEYCODE) {
         action();
       }
@@ -19,7 +19,7 @@
       }
     },
     // Действие при нажатии ENTER
-    isEnterEvent: function (evt, action) {
+    pressEnterEvent: function (evt, action) {
       if (evt.keyCode === ENTER_KEYCODE) {
         action();
       }
