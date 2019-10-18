@@ -119,16 +119,14 @@
     inputElement.value = color;
   };
 
-  window.setup = {
-    // Отрисовка окна сравнения
-    renderPopup: function () {
-      setupSimilarListElement.appendChild(
-          createWizardsList(
-              getWizardData(NUMBER_OF_WIZARDS)
-          )
-      );
-      setupElement.querySelector('.setup-similar').classList.remove('hidden');
-    }
+  // Отрисовка окна сравнения
+  var renderPopup = function () {
+    setupSimilarListElement.appendChild(
+        createWizardsList(
+            getWizardData(NUMBER_OF_WIZARDS)
+        )
+    );
+    setupElement.querySelector('.setup-similar').classList.remove('hidden');
   };
 
   // Обработчики событий DOM
@@ -157,4 +155,9 @@
         window.util.getRandomIndex(Wizard.FIREBALL_COLORS)
     );
   });
+
+  // Экспорт
+  window.setup = {
+    renderPopup: renderPopup
+  };
 })();

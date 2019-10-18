@@ -2,7 +2,7 @@
 
 (function () {
   // Переменные
-  var popupIsOpened = false;
+  var isOpened = false;
 
   // Элементы DOM
   var setupElement = document.querySelector('.setup');
@@ -12,9 +12,9 @@
 
   // Открытие окна
   var openPopup = function () {
-    if (!popupIsOpened) {
+    if (!isOpened) {
       window.setup.renderPopup();
-      popupIsOpened = true;
+      isOpened = true;
     }
     setupElement.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscPress);
@@ -34,17 +34,13 @@
   };
 
   // Обработчики событий DOM
-  setupOpenElement.addEventListener('click', function () {
-    openPopup();
-  });
+  setupOpenElement.addEventListener('click', openPopup);
 
   setupOpenElement.addEventListener('keydown', function (evt) {
     window.util.pressEnterEvent(evt, openPopup);
   });
 
-  setupCloseElement.addEventListener('click', function () {
-    closePopup();
-  });
+  setupCloseElement.addEventListener('click', closePopup);
 
   setupCloseElement.addEventListener('keydown', function (evt) {
     window.util.pressEnterEvent(evt, closePopup);
