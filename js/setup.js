@@ -2,8 +2,8 @@
 
 (function () {
   // Константы
-  var WIZARD = {
-    names: {
+  var Wizard = {
+    NAMES: {
       first: [
         'Иван',
         'Хуан Себастьян',
@@ -23,26 +23,27 @@
         'Нионго',
         'Ирвинг']
     },
-    coatColors: [
+    COAT_COLORS: [
       'rgb(101, 137, 164)',
       'rgb(241, 43, 107)',
       'rgb(146, 100, 161)',
       'rgb(56, 159, 117)',
       'rgb(215, 210, 55)',
       'rgb(0, 0, 0)'],
-    eyesColors: [
+    EYES_COLORS: [
       'black',
       'red',
       'blue',
       'yellow',
       'green'],
-    fireballColors: [
+    FIREBALL_COLORS: [
       '#ee4830',
       '#30a8ee',
       '#5ce6c0',
       '#e848d5',
       '#e6e848']
   };
+
   var NUMBER_OF_WIZARDS = 4;
 
   // Элементы DOM
@@ -67,11 +68,11 @@
     var wizardData = [];
 
     for (var i = 0; i < numberOfWizards; i++) {
-      var firstName = window.util.getRandomIndex(WIZARD.names.first);
-      var lastName = window.util.getRandomIndex(WIZARD.names.last);
+      var firstName = window.util.getRandomIndex(Wizard.NAMES.first);
+      var lastName = window.util.getRandomIndex(Wizard.NAMES.last);
       var fullName = firstName + ' ' + lastName;
-      var coatColor = window.util.getRandomIndex(WIZARD.coatColors);
-      var eyesColor = window.util.getRandomIndex(WIZARD.eyesColors);
+      var coatColor = window.util.getRandomIndex(Wizard.COAT_COLORS);
+      var eyesColor = window.util.getRandomIndex(Wizard.EYES_COLORS);
 
       var newWizard = {
         name: fullName,
@@ -137,7 +138,7 @@
     changeColor(
         wizardCoatElement,
         wizardCoatInputElement,
-        window.util.getRandomIndex(WIZARD.coatColors)
+        window.util.getRandomIndex(Wizard.COAT_COLORS)
     );
   });
 
@@ -145,7 +146,7 @@
     changeColor(
         wizardEyesElement,
         wizardEyesInputElement,
-        window.util.getRandomIndex(WIZARD.eyesColors)
+        window.util.getRandomIndex(Wizard.EYES_COLORS)
     );
   });
 
@@ -153,7 +154,7 @@
     changeColor(
         wizardFireballElement,
         wizardFireballInputElement,
-        window.util.getRandomIndex(WIZARD.fireballColors)
+        window.util.getRandomIndex(Wizard.FIREBALL_COLORS)
     );
   });
 })();
