@@ -1,3 +1,5 @@
+'use strict';
+
 (function () {
   // Константы
   var LOAD_URL = 'https://js.dump.academy/code-and-magick/data';
@@ -5,7 +7,7 @@
   var TIMEOUT = 10000;
 
   // Создание запроса
-  var  makeRequest = function (xhr, onLoad, onError) {
+  var makeRequest = function (xhr, onLoad, onError) {
     xhr.responseType = 'json';
     xhr.timeout = TIMEOUT;
 
@@ -22,7 +24,7 @@
     });
 
     xhr.addEventListener('timeout', function () {
-      onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс')
+      onError('Запрос не успел выполниться за ' + xhr.timeout + 'мс');
     });
   };
 
