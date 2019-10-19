@@ -115,7 +115,7 @@
   });
 
   setupWizardFormElement.addEventListener('submit', function (evt) {
-    window.backend.save(new FormData(setupWizardFormElement), function (response) {
+    window.backend.save(new FormData(setupWizardFormElement), function () {
       setupElement.classList.add('hidden');
     });
     evt.preventDefault();
