@@ -3,7 +3,7 @@
 (function () {
   // Константы
   var LOAD_URL = 'https://js.dump.academy/code-and-magick/data';
-  var SAVE_URL = 'https://js.dump.academy/code-and-magickkk';
+  var SAVE_URL = 'https://js.dump.academy/code-and-magick';
   var TIMEOUT = 10000;
 
   // Создание запроса
