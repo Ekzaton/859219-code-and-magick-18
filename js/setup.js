@@ -87,7 +87,7 @@
     setupSimilarListElement.appendChild(createWizardsList(wizardData));
 
     setupElement.querySelector('.setup-similar').classList.remove('hidden');
-  }
+  };
 
   var onSaveSuccess = function () {
     setupElement.classList.add('hidden');
@@ -105,7 +105,7 @@
 
     node.textContent = errorMessage;
     document.body.insertAdjacentElement('afterbegin', node);
-};
+  };
 
   // Обработчики событий DOM
   userNameInputElement.addEventListener('keydown', window.util.disableEscEvent);
@@ -135,7 +135,7 @@
   });
 
   setupWizardFormElement.addEventListener('submit', function (evt) {
-    window.backend.save(new FormData(setupWizardFormElement), onSaveSuccess, onError)
+    window.backend.save(new FormData(setupWizardFormElement), onSaveSuccess, onError);
     evt.preventDefault();
   });
 
