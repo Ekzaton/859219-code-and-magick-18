@@ -3,7 +3,7 @@
 (function () {
   // Константы
   var LOAD_URL = 'https://js.dump.academy/code-and-magick/data';
-  var SAVE_URL = 'https://js.dump.academy/code-and-magick';
+  var SAVE_URL = 'https://js.dump.academy/code-and-magickkk';
   var TIMEOUT = 10000;
 
   // Создание запроса
@@ -28,7 +28,7 @@
     });
   };
 
-  // Загрузка данных с сервера
+  // Загрузка данных
   var load = function (onLoad, onError) {
     var xhr = new XMLHttpRequest();
 
@@ -38,7 +38,7 @@
     xhr.send();
   };
 
-  // Сохранение загруженных данных
+  // Сохранение данных
   var save = function (data, onLoad, onError) {
     var xhr = new XMLHttpRequest();
 

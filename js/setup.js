@@ -80,12 +80,32 @@
 
   // Отрисовка окна сравнения
   var renderPopup = function () {
-    window.backend.load(function (wizardData) {
-      setupSimilarListElement.appendChild(createWizardsList(wizardData));
-    });
+    window.backend.load(onLoadSuccess, onError);
+  };
+
+  var onLoadSuccess = function (wizardData) {
+    setupSimilarListElement.appendChild(createWizardsList(wizardData));
 
     setupElement.querySelector('.setup-similar').classList.remove('hidden');
+  }
+
+  var onSaveSuccess = function () {
+    setupElement.classList.add('hidden');
   };
+
+  var onError = function (errorMessage) {
+    var node = document.createElement('div');
+
+    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
+    node.style.padding = '22px 0';
+    node.style.position = 'absolute';
+    node.style.left = 0;
+    node.style.right = 0;
+    node.style.fontSize = '30px';
+
+    node.textContent = errorMessage;
+    document.body.insertAdjacentElement('afterbegin', node);
+};
 
   // Обработчики событий DOM
   userNameInputElement.addEventListener('keydown', window.util.disableEscEvent);
@@ -115,9 +135,7 @@
   });
 
   setupWizardFormElement.addEventListener('submit', function (evt) {
-    window.backend.save(new FormData(setupWizardFormElement), function () {
-      setupElement.classList.add('hidden');
-    });
+    window.backend.save(new FormData(setupWizardFormElement), onSaveSuccess, onError)
     evt.preventDefault();
   });
 
