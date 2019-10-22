@@ -24,6 +24,13 @@
       '#e6e848']
   };
 
+  var ErrorStyle = {
+    POSITION: 'z-index: 100; position: absolute; left: 0; right: 0;',
+    GAPS: 'margin: 0 auto; padding: 22px 0;',
+    TEXT: 'font-size: 30px; text-align: center;',
+    COLOR: 'background-color: red;'
+  };
+
   var NUMBER_OF_WIZARDS = 4;
 
   // Элементы DOM
@@ -45,13 +52,22 @@
 
   var setupWizardFormElement = setupElement.querySelector('.setup-wizard-form');
 
+  // Адаптация ответа сервера под структуру приложения
+  var adaptData = function (item) {
+    return {
+      name: item.name,
+      coatColor: item.colorCoat,
+      eyesColor: item.colorEyes
+    };
+  };
+
   // Создание персонажа
   var createWizard = function (wizard) {
     var setupWizard = setupSimilarItemElement.cloneNode(true);
 
-    setupWizard.querySelector('.setup-similar-label').textContent = wizard.name;
-    setupWizard.querySelector('.wizard-coat').style.fill = wizard.colorCoat;
-    setupWizard.querySelector('.wizard-eyes').style.fill = wizard.colorEyes;
+    setupWizard.querySelector('.setup-similar-label').textContent = adaptData(wizard).name;
+    setupWizard.querySelector('.wizard-coat').style.fill = adaptData(wizard).coatColor;
+    setupWizard.querySelector('.wizard-eyes').style.fill = adaptData(wizard).eyesColor;
 
     return setupWizard;
   };
@@ -83,32 +99,30 @@
     window.backend.load(onLoadSuccess, onError);
   };
 
+  // Успешная загрузка
   var onLoadSuccess = function (wizardData) {
     setupSimilarListElement.appendChild(createWizardsList(wizardData));
 
     setupElement.querySelector('.setup-similar').classList.remove('hidden');
   };
 
+  // Успешное сохранение
   var onSaveSuccess = function () {
     setupElement.classList.add('hidden');
   };
 
+  // Ошибка при загрузке/сохранении
   var onError = function (errorMessage) {
     var node = document.createElement('div');
 
-    node.style = 'z-index: 100; margin: 0 auto; text-align: center; background-color: red;';
-    node.style.padding = '22px 0';
-    node.style.position = 'absolute';
-    node.style.left = 0;
-    node.style.right = 0;
-    node.style.fontSize = '30px';
-
+    node.style.cssText = ErrorStyle.POSITION + ErrorStyle.GAPS + ErrorStyle.TEXT + ErrorStyle.COLOR;
     node.textContent = errorMessage;
+
     document.body.insertAdjacentElement('afterbegin', node);
   };
 
   // Обработчики событий DOM
-  userNameInputElement.addEventListener('keydown', window.util.disableEscEvent);
+  userNameInputElement.addEventListener('keydown', window.util.disableEscPress);
 
   wizardCoatElement.addEventListener('click', function () {
     changeColor(

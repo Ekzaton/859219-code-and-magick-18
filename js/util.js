@@ -6,21 +6,21 @@
   var ENTER_KEYCODE = 13;
 
   // Действие при нажатии ESC
-  var pressEscEvent = function (evt, action) {
+  var onEscPress = function (evt, action) {
     if (evt.keyCode === ESC_KEYCODE) {
       action();
     }
   };
 
   // Запрет действия при нажатии ESC
-  var disableEscEvent = function (evt) {
+  var disableEscPress = function (evt) {
     if (evt.keyCode === ESC_KEYCODE) {
       evt.stopPropagation();
     }
   };
 
   // Действие при нажатии ENTER
-  var pressEnterEvent = function (evt, action) {
+  var onEnterPress = function (evt, action) {
     if (evt.keyCode === ENTER_KEYCODE) {
       action();
     }
@@ -33,9 +33,9 @@
 
   // Экспорт
   window.util = {
-    pressEscEvent: pressEscEvent,
-    disableEscEvent: disableEscEvent,
-    pressEnterEvent: pressEnterEvent,
+    onEscPress: onEscPress,
+    disableEscPress: disableEscPress,
+    onEnterPress: onEnterPress,
     getRandomIndex: getRandomIndex
   };
 })();
