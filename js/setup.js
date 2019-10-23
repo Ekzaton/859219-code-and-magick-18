@@ -63,12 +63,11 @@
 
   // Создание персонажа
   var createWizard = function (wizard) {
-    var currentWizard = adaptData(wizard);
     var setupWizard = setupSimilarItemElement.cloneNode(true);
 
-    setupWizard.querySelector('.setup-similar-label').textContent = currentWizard.name;
-    setupWizard.querySelector('.wizard-coat').style.fill = currentWizard.coatColor;
-    setupWizard.querySelector('.wizard-eyes').style.fill = currentWizard.eyesColor;
+    setupWizard.querySelector('.setup-similar-label').textContent = wizard.name;
+    setupWizard.querySelector('.wizard-coat').style.fill = wizard.coatColor;
+    setupWizard.querySelector('.wizard-eyes').style.fill = wizard.eyesColor;
 
     return setupWizard;
   };
@@ -78,7 +77,7 @@
     var setupWizardsList = document.createDocumentFragment();
 
     for (var i = 0; i < NUMBER_OF_WIZARDS; i++) {
-      setupWizardsList.appendChild(createWizard(wizardData[i]));
+      setupWizardsList.appendChild(createWizard(adaptData(wizardData[i])));
     }
 
     return setupWizardsList;
