@@ -2,7 +2,7 @@
 
 (function () {
   // Переменные
-  var popupIsOpened = false;
+  var isOpened = false;
 
   // Элементы DOM
   var setupElement = document.querySelector('.setup');
@@ -11,17 +11,17 @@
   var dialogHandleElement = document.querySelector('.upload');
 
   // Открытие окна
-  var openPopup = function () {
-    if (!popupIsOpened) {
+  var onSetupOpenClick = function () {
+    if (!isOpened) {
       window.setup.renderPopup();
-      popupIsOpened = true;
+      isOpened = true;
     }
     setupElement.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscPress);
   };
 
   // Закрытие окна
-  var closePopup = function () {
+  var onSetupCloseClick = function () {
     setupElement.classList.add('hidden');
     setupElement.style.removeProperty('top');
     setupElement.style.removeProperty('left');
@@ -30,24 +30,20 @@
 
   // Закрытие окна по ESC при отсутствии фокуса на элементе внутри него
   var onPopupEscPress = function (evt) {
-    window.util.pressEscEvent(evt, closePopup);
+    window.util.onEscPress(evt, onSetupCloseClick);
   };
 
   // Обработчики событий DOM
-  setupOpenElement.addEventListener('click', function () {
-    openPopup();
-  });
+  setupOpenElement.addEventListener('click', onSetupOpenClick);
 
   setupOpenElement.addEventListener('keydown', function (evt) {
-    window.util.pressEnterEvent(evt, openPopup);
+    window.util.onEnterPress(evt, onSetupOpenClick);
   });
 
-  setupCloseElement.addEventListener('click', function () {
-    closePopup();
-  });
+  setupCloseElement.addEventListener('click', onSetupCloseClick);
 
   setupCloseElement.addEventListener('keydown', function (evt) {
-    window.util.pressEnterEvent(evt, closePopup);
+    window.util.onEnterPress(evt, onSetupCloseClick);
   });
 
   dialogHandleElement.addEventListener('mousedown', function (evt) {
