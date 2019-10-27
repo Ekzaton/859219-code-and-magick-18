@@ -1,21 +1,15 @@
 'use strict';
 
 (function () {
-  // Переменные
-  var isOpened = false;
-
   // Элементы DOM
   var setupElement = document.querySelector('.setup');
   var setupOpenElement = document.querySelector('.setup-open');
-  var setupCloseElement = setupElement.querySelector('.setup-close');
+  var setupCloseElement = document.querySelector('.setup-close');
   var dialogHandleElement = document.querySelector('.upload');
 
   // Открытие окна
   var onSetupOpenClick = function () {
-    if (!isOpened) {
-      window.setup.renderPopup();
-      isOpened = true;
-    }
+    window.setup.renderPopup();
     setupElement.classList.remove('hidden');
     document.addEventListener('keydown', onPopupEscPress);
   };
