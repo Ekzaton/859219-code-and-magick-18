@@ -36,16 +36,16 @@
   // Обновление списка похожих персонажей
   var updateWizards = function () {
     window.render.createWizardsList(
-      wizards.slice().sort(function (left, right) {
-        var rankDiff = getRank(right) - getRank(left);
+        wizards.slice().sort(function (left, right) {
+          var rankDiff = getRank(right) - getRank(left);
 
-        if (rankDiff === 0) {
-          rankDiff = wizards.indexOf(left) - wizards.indexOf(right);
-        }
+          if (rankDiff === 0) {
+            rankDiff = wizards.indexOf(left) - wizards.indexOf(right);
+          }
 
-        return rankDiff;
-      })
-    )
+          return rankDiff;
+        })
+    );
   };
 
   // Изменение цвета мантии
