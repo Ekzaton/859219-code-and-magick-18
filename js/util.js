@@ -34,7 +34,7 @@
 
   // Устранение дребезга
   var removeDebounce = function (cb, interval) {
-    interval = typeof interval !== 'undefined' ?  interval : DEBOUNCE_INTERVAL;
+    interval = typeof interval !== 'undefined' ? interval : DEBOUNCE_INTERVAL;
     var lastTimeout = null;
 
     return function () {
