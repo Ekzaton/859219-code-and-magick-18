@@ -4,7 +4,6 @@
   // Константы
   var ESC_KEYCODE = 27;
   var ENTER_KEYCODE = 13;
-  var DEBOUNCE_INTERVAL = 300;
 
   // Действие при нажатии ESC
   var onEscPress = function (evt, action) {
@@ -33,7 +32,7 @@
   };
 
   // Устранение дребезга
-  var removeDebounce = function (cb, interval = DEBOUNCE_INTERVAL) {
+  var removeDebounce = function (cb, interval = 300) {
     var lastTimeout = null;
 
     return function () {
