@@ -37,11 +37,7 @@
   var updateWizards = function () {
     window.render.createWizardsList(
         wizards.slice().sort(function (left, right) {
-          var rankDiff = getRank(right) - getRank(left);
-
-          if (rankDiff === 0) {
-            rankDiff = wizards.indexOf(left) - wizards.indexOf(right);
-          }
+          var rankDiff = 0 ? wizards.indexOf(left) - wizards.indexOf(right) : getRank(right) - getRank(left);
 
           return rankDiff;
         })
@@ -49,13 +45,13 @@
   };
 
   // Изменение цвета мантии
-  var onCoatChange = window.debounce(function (color) {
+  var onCoatChange = window.util.removeDebounce(function (color) {
     coatColor = color;
     updateWizards();
   });
 
   // Изменение цвета глаз
-  var onEyesChange = window.debounce(function (color) {
+  var onEyesChange = window.util.removeDebounce(function (color) {
     eyesColor = color;
     updateWizards();
   });
