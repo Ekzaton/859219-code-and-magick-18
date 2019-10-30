@@ -33,7 +33,7 @@
   };
 
   // Устранение дребезга
-  var removeDebounce = function (cb, interval) {
+  var debounce = function (cb, interval) {
     interval = typeof interval !== 'undefined' ? interval : DEBOUNCE_INTERVAL;
     var lastTimeout = null;
 
@@ -56,6 +56,6 @@
     disableEscPress: disableEscPress,
     onEnterPress: onEnterPress,
     getRandomIndex: getRandomIndex,
-    removeDebounce: removeDebounce
+    debounce: debounce
   };
 })();
