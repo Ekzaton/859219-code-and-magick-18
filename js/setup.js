@@ -47,13 +47,13 @@
   };
 
   // Изменение цвета мантии
-  var onCoatChange = window.util.removeDebounce(function (color) {
+  var onCoatChange = window.util.debounce(function (color) {
     coatColor = color;
     updateWizards();
   });
 
   // Изменение цвета глаз
-  var onEyesChange = window.util.removeDebounce(function (color) {
+  var onEyesChange = window.util.debounce(function (color) {
     eyesColor = color;
     updateWizards();
   });
