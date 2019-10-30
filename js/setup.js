@@ -37,11 +37,9 @@
   var updateWizards = function () {
     window.render.createWizardsList(
         wizards.slice().sort(function (left, right) {
-          var rankDiff = rankDiff === 0
-            ? wizards.indexOf(left) - wizards.indexOf(right)
-            : getRank(right) - getRank(left);
-
-          return rankDiff;
+          var rankDiff = wizards.indexOf(left) - wizards.indexOf(right);
+          
+          return rankDiff ? rankDiff : (getRank(right) - getRank(left));
         })
     );
   };
