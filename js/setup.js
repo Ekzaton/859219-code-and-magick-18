@@ -8,6 +8,7 @@
     TEXT: 'font-size: 30px; text-align: center;',
     COLOR: 'background-color: red;'
   };
+  var NO_DIFF = 0;
 
   // Глобальные переменные
   var wizards = [];
@@ -38,7 +39,7 @@
     window.render.createWizardsList(
         wizards.slice().sort(function (left, right) {
           var rankDiff = wizards.indexOf(left) - wizards.indexOf(right);
-          return 0 ? rankDiff : (getRank(right) - getRank(left));
+          return NO_DIFF ? rankDiff : (getRank(right) - getRank(left));
         })
     );
   };
