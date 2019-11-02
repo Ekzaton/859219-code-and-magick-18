@@ -14,7 +14,7 @@
     var fileName = file.name.toLowerCase();
 
     var matches = FILE_TYPES.some(function (it) {
-     return fileName.endsWith(it);
+      return fileName.endsWith(it);
     });
 
     if (matches) {
