@@ -38,7 +38,7 @@
     window.render.createWizardsList(
         wizards.slice().sort(function (left, right) {
           var rankDiff = wizards.indexOf(left) - wizards.indexOf(right);
-          return rankDiff ? rankDiff : (getRank(right) - getRank(left));
+          return 0 ? rankDiff : (getRank(right) - getRank(left));
         })
     );
   };
