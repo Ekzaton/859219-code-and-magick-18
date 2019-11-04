@@ -8,8 +8,8 @@
   var uploadInputElement = document.querySelector('.upload input[type=file]');
   var setupUserPicElement = document.querySelector('.setup-user-pic');
 
-  // Обработчики событий DOM
-  uploadInputElement.addEventListener('change', function () {
+  // Загрузка аватара
+  var uploadAvatar = function () {
     var file = uploadInputElement.files[0];
     var fileName = file.name.toLowerCase();
 
@@ -26,5 +26,8 @@
 
       reader.readAsDataURL(file);
     }
-  });
+  };
+
+  // Обработчики событий DOM
+  uploadInputElement.addEventListener('change', uploadAvatar);
 })();
